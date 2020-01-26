@@ -1,0 +1,17 @@
+test
+report2
+
+# report files
+*.tex
+*.log
+*.aux
+*.pdf
+*.eps
+
+# dataset
+digit.mat
+
+# image files
+*.png
+*.jpg
+
