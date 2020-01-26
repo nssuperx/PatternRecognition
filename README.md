@@ -1,2 +1,2 @@
 # PatternRecognition
-パターン認識
+パターン認識の課題です．
