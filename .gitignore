@@ -1,9 +1,10 @@
 test
-report2
+report1
 
 # report files
 *.tex
 *.log
+*.dvi
 *.aux
 *.pdf
 *.eps
