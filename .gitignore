@@ -17,3 +17,9 @@ digit.mat
 *.png
 *.jpg
 
+# original source files
+p118a.py
+p118c.py
+test_gmm_original.py
+
+
