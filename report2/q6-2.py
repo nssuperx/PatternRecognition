@@ -6,7 +6,7 @@ from matplotlib.ticker import MultipleLocator
 
 # 参考:test_gmm.py
 # 混合数3, muとsigmaは関数内で適当に設定
-def q2func_gmm(n, fill=0.0):
+def q6func_gmm(n, fill=0.0):
     x = np.zeros((2,n))
     g = np.random.randn(2,n)
     u = np.random.rand(2,n)
@@ -29,7 +29,7 @@ def q2func_gmm(n, fill=0.0):
 # 参考:p118a.py, p118c.py
 n = 1000 # 標本数
 m = 3 # 混合数
-x = q2func_gmm(n)
+x = q6func_gmm(n)
 #plt.scatter(x[0],x[1])
 #plt.show()
 
@@ -93,7 +93,6 @@ sigma2 = sigma2.reshape(m,1)
 wt = w
 mut = mu
 sigma2t = sigma2
-
 
 while 1:
     tmp1 = np.square(np.tile(x[1], (m,1)) - np.tile(mu, (1,n)))
