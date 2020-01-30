@@ -29,6 +29,7 @@ px = np.random.randint(0,width - FRAGMENT_SIZE)
 py = np.random.randint(0,height - FRAGMENT_SIZE)
 sample_pixels = np.array([[img_pixels[y + py][x + px] for x in range(FRAGMENT_SIZE)] for y in range(FRAGMENT_SIZE)])
 
+# 抽出できているか確認
 '''
 img = Image.new('L', (FRAGMENT_SIZE,FRAGMENT_SIZE))
 for y in range(FRAGMENT_SIZE):
@@ -47,67 +48,81 @@ for i in range(1,FRAGMENT_NUM):
     sample_pixels = np.append(sample_pixels,sample_pixel,axis=0)
 
 sample_pixels = sample_pixels.reshape(FRAGMENT_NUM,FRAGMENT_SIZE*FRAGMENT_SIZE)
-print(sample_pixels.shape)
+# print(sample_pixels.shape)
+
+# ランダムにとってきた画像の破片を表示
+'''
+fig = plt.figure()
+ny = int(np.sqrt(FRAGMENT_NUM))
+nx = int(np.sqrt(FRAGMENT_NUM))
+for i in range(ny):
+    for j in range(nx):
+        # plt.subplot(ny, nx, i + ny*j + 1)
+        ax = fig.add_subplot(ny, nx, i + ny*j + 1)
+        ax.axis('off') # 軸は描画しない
+        e = sample_pixels[np.random.randint(FRAGMENT_NUM)]
+        img = np.reshape(e,(16,16))
+        ax.imshow(img, cmap="gray")
+plt.show()
+'''
 
 z = sample_pixels.T.copy()
-print(z.shape)
+# print(z.shape)
+
 # 分散・共分散行列 V の計算
 V = np.cov(z)
-print(V.shape) # (256, 256)
+# print(V.shape) # (256, 256)
 
 # 正定値対称行列 V の固有ベクトル・固有値の計算
 [eigval, eigvec] = np.linalg.eig(V)
-print(eigvec.shape) # (256, 256)
-print(eigval.shape) # (256,)
+# print(eigvec.shape) # (256, 256)
+# print(eigval.shape) # (256,)
 
 # ここで固有ベクトルを固有値の大きい順に並べ替える．
 index = np.argsort(eigval)[::-1]
 eigvec = eigvec[:,index]
-print(eigvec.shape) # (256, 256)
-e=eigvec[:,0:2] #最初の2つだけとってきてる
-print(e.shape) # (256, 2)
+# print(eigvec.shape) # (256, 256)
+# e=eigvec[:,0:2] #最初の2つだけとってきてる
+# print(e.shape) # (256, 2)
 
-# ここからplot
-fig = plt.figure()
 
-'''
+
 for i in range(15):
     plt.subplot(3, 5, i+1)
     e = eigvec[:,i]
     img = np.reshape(e,(16,16))
-    plt.imshow(img, cmap=plt.cm.gray_r)
-
+    plt.imshow(img, cmap="gray")
 plt.show()
 
-plt.subplot(1, 5, 1)
+
+fig = plt.figure()
+ax = fig.add_subplot(1, 5, 1)
 e1=eigvec[:,0] # 第1主成分
 img = np.reshape(e1,(16,16))
-plt.imshow(img, cmap=plt.cm.gray_r)
+ax.imshow(img, cmap="gray_r")
 
-plt.subplot(1, 5, 2)
+ax = fig.add_subplot(1, 5, 2)
 e2=eigvec[:,1] # 第2主成分
 img = np.reshape(e2,(16,16))
-plt.imshow(img, cmap=plt.cm.gray_r)
+ax.imshow(img, cmap="gray_r")
 
-plt.subplot(1, 5, 3)
+ax = fig.add_subplot(1, 5, 3)
 e50=eigvec[:,49] # 第50主成分
 img = np.reshape(e50,(16,16))
-plt.imshow(img, cmap=plt.cm.gray_r)
+ax.imshow(img, cmap="gray_r")
 
-plt.subplot(1, 5, 4)
+ax = fig.add_subplot(1, 5, 4)
 e100=eigvec[:,99] # 第100主成分
 img = np.reshape(e100,(16,16))
-plt.imshow(img, cmap=plt.cm.gray_r)
+ax.imshow(img, cmap="gray_r")
 
-plt.subplot(1, 5, 5)
+ax = fig.add_subplot(1, 5, 5)
 e200=eigvec[:,199] # 第200主成分
 img = np.reshape(e200,(16,16))
-plt.imshow(img, cmap=plt.cm.gray_r)
-'''
+ax.imshow(img, cmap="gray_r")
+plt.show()
 
-
-
-# plt.hist(eigval, bins=100)
+plt.hist(eigval, bins=100)
 
 print(eigval.mean())
 print(np.median(eigval))
@@ -116,10 +131,10 @@ print(eigval.max())
 print(eigval.min())
 #print(eigval)
 eigval_cp = eigval.copy()
+plt.show()
 
 
+plt.plot(eigval)
 
-#plt.plot(eigval)
 
-
-#plt.show()
+plt.show()
