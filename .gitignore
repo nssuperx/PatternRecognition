@@ -18,6 +18,8 @@ digit.mat
 *.jpg
 
 # original source files
+show_digits.py
+
 p118a.py
 p118c.py
 test_gmm_original.py
