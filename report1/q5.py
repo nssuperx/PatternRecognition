@@ -129,12 +129,16 @@ print(np.median(eigval))
 print(np.percentile(eigval,75))
 print(eigval.max())
 print(eigval.min())
-#print(eigval)
-eigval_cp = eigval.copy()
+print(eigval)
+
 plt.show()
-
-
 plt.plot(eigval)
-
-
 plt.show()
+
+eigval_cp = eigval.copy()
+for i in range(10):
+    eigval_cp = np.delete(eigval_cp,0)
+    plt.hist(eigval_cp, bins=100)
+    plt.show()
+    plt.plot(eigval_cp)
+    plt.show()
