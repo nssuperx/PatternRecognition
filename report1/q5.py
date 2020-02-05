@@ -122,8 +122,14 @@ img = np.reshape(e200,(16,16))
 ax.imshow(img, cmap="gray_r")
 plt.show()
 
-plt.hist(eigval, bins=100)
 
+fig, ax = plt.subplots()
+ax.set_xlabel("Principal Component")
+ax.set_ylabel("Eigenvalue")
+ax.hist(eigval, bins=100)
+plt.show()
+
+'''
 print(eigval.mean())
 print(np.median(eigval))
 print(np.percentile(eigval,75))
@@ -131,16 +137,19 @@ print(eigval.max())
 print(eigval.min())
 print(eigval)
 
-plt.show()
 plt.plot(eigval)
 plt.show()
+'''
 
 eigval_cp = eigval.copy()
-for i in range(10):
+# 一応ソート，降順
+eigval_cp = np.sort(eigval_cp)[::-1]
+fig1 = plt.figure()
+fig2 = plt.figure()
+for i in range(6):
+    ax1 = fig1.add_subplot(2, 3, i+1)
+    ax2 = fig2.add_subplot(2, 3, i+1)
     eigval_cp = np.delete(eigval_cp,0)
-    plt.hist(eigval_cp, bins=100)
-    plt.xlabel("Principal Component")
-    plt.ylabel("Eigenvalue")
-    plt.show()
-    #plt.plot(eigval_cp)
-    #plt.show()
+    ax1.hist(eigval_cp, bins=100)
+    ax2.plot(eigval_cp)
+plt.show()
