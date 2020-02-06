@@ -129,6 +129,13 @@ ax.set_ylabel("Eigenvalue")
 ax.hist(eigval, bins=100)
 plt.show()
 
+fig, ax = plt.subplots(figsize=(2,1), dpi=100)
+ax.set_xlabel("Principal Component")
+ax.set_ylabel("Eigenvalue")
+ax.set_ylim(0,5)
+ax.hist(eigval, bins=100)
+plt.show()
+
 '''
 print(eigval.mean())
 print(np.median(eigval))
