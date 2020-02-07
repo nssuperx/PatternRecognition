@@ -157,6 +157,7 @@ fig1 = plt.figure()
 fig2 = plt.figure()
 for i in range(6):
     ax1 = fig1.add_subplot(2, 3, i+1)
+    ax1.set_ylim(0,5)
     ax2 = fig2.add_subplot(2, 3, i+1)
     eigval_cp = np.delete(eigval_cp,0)
     ax1.hist(eigval_cp, bins=100)
