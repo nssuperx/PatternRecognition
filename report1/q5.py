@@ -23,7 +23,7 @@ for y in range(height):
 img.save("grayscaleImage.png")
 
 FRAGMENT_SIZE = 16
-FRAGMENT_NUM = 500
+FRAGMENT_NUM = 10000
 # ランダム抽出 はじめの一回
 px = np.random.randint(0,width - FRAGMENT_SIZE)
 py = np.random.randint(0,height - FRAGMENT_SIZE)
