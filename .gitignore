@@ -25,3 +25,6 @@ test_gmm_original.py
 
 # Python venv
 env
+
+# vscode
+.vscode
