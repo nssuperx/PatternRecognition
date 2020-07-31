@@ -1,3 +1,8 @@
 # image file
 !IMG_1904.JPG
 
+# original source files
+show_digits.py
+
+# dataset
+digit.mat

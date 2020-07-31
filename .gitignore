@@ -1,27 +1,18 @@
 test
 
-# report files
-*.tex
+# tex tmp files
 *.log
 *.dvi
 *.aux
-*.pdf
-*.eps
 *.out
 
-# dataset
-digit.mat
+# figure files
+*.pdf
+*.eps
 
 # image files
 *.png
 *.jpg
-
-# original source files
-show_digits.py
-
-p118a.py
-p118c.py
-test_gmm_original.py
 
 # Python venv
 env
